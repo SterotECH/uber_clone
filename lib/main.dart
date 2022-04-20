@@ -1,21 +1,21 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:uber_clone/splashScreen/splash_screen.dart';
 
-void main() {
-  runApp(MyApp(
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MyApp(
       child: MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'Uber Clone Driver App',
-    theme: ThemeData(
-      primarySwatch: Colors.blue,
+          debugShowCheckedModeBanner: false,
+          title: 'Uber Clone Driver App',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const MySplashScreen()),
     ),
-    home: Scaffold(
-        appBar: AppBar(
-      elevation: 0,
-      title: const Text("Welcome to driver App"),
-    )),
-  )));
+  );
 }
 
 class MyApp extends StatefulWidget {
