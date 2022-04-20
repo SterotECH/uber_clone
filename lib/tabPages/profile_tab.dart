@@ -13,7 +13,7 @@ class _ProfileTabPageState extends State<ProfileTabPage> {
     return const Center(
       child: Text(
         "Profile Tab Page",
-        style: TextStyle(fontSize: 30),
+        style: TextStyle(fontSize: 30, color: Colors.white),
       ),
     );
   }

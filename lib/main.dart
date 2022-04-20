@@ -11,6 +11,7 @@ void main() async {
           debugShowCheckedModeBanner: false,
           title: 'Uber Clone Driver App',
           theme: ThemeData(
+            scaffoldBackgroundColor: Colors.blueGrey[900],
             primarySwatch: Colors.blue,
           ),
           home: const MySplashScreen()),

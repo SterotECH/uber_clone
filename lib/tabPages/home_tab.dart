@@ -13,7 +13,7 @@ class _HomeTabPageState extends State<HomeTabPage> {
     return const Center(
       child: Text(
         "Home Tab Page",
-        style: TextStyle(fontSize: 30),
+        style: TextStyle(fontSize: 30, color: Colors.white),
       ),
     );
   }

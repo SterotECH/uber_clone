@@ -13,7 +13,7 @@ class _EarningTabPageState extends State<EarningTabPage> {
     return const Center(
       child: Text(
         "Earnings Tab Page",
-        style: TextStyle(fontSize: 30),
+        style: TextStyle(fontSize: 30, color: Colors.white),
       ),
     );
   }

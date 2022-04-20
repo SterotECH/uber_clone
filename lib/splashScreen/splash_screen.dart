@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:uber_clone/mainScreens/main_screen.dart';
+import 'package:uber_clone/auth/login_screen.dart';
+import 'package:uber_clone/auth/signup_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => MainScreen(),
+            builder: (context) => LoginScreen(),
           ),
         );
       },

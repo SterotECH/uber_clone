@@ -13,7 +13,7 @@ class _RatingsTabPageState extends State<RatingsTabPage> {
     return const Center(
       child: Text(
         "Ratings Tab Page",
-        style: TextStyle(fontSize: 30),
+        style: TextStyle(fontSize: 30, color: Colors.white),
       ),
     );
   }
