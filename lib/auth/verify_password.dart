@@ -3,8 +3,6 @@ import 'package:uber_clone/mainScreens/main_screen.dart';
 import 'package:uber_clone/widget/constant.dart';
 
 class VerifyPassword extends StatefulWidget {
-  VerifyPassword({Key? key}) : super(key: key);
-
   @override
   State<VerifyPassword> createState() => _VerifyPasswordState();
 }
