@@ -1,0 +1,33 @@
+[debug] [2022-04-21T16:51:07.173Z] ----------------------------------------------------------------------
+[debug] [2022-04-21T16:51:07.180Z] Command:       /usr/local/bin/firebase /home/stero/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase apps:create android uber_clone (android) --package-name=com.stero.uber_clone --json --project=stero-uber-clone
+[debug] [2022-04-21T16:51:07.181Z] CLI Version:   10.6.0
+[debug] [2022-04-21T16:51:07.181Z] Platform:      linux
+[debug] [2022-04-21T16:51:07.182Z] Node Version:  v12.18.1
+[debug] [2022-04-21T16:51:07.183Z] Time:          Thu Apr 21 2022 16:51:07 GMT+0000 (Greenwich Mean Time)
+[debug] [2022-04-21T16:51:07.184Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-04-21T16:51:07.212Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-04-21T16:51:07.213Z] > authorizing via signed-in user (agyeisterogh@gmail.com)
+[info] Create your ANDROID app in project stero-uber-clone:
+[debug] [2022-04-21T16:51:07.228Z] >>> HTTP REQUEST POST https://firebase.googleapis.com/v1beta1/projects/stero-uber-clone/androidApps  
+ {"displayName":"uber_clone (android)","packageName":"com.stero.uber_clone"}
+[debug] [2022-04-21T16:51:17.951Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Thu, 21 Apr 2022 16:51:19 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-04-21T16:51:17.952Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2022-04-21T16:51:17.957Z] HTTP Error: 403, The caller does not have permission
+[debug] [2022-04-21T16:51:18.626Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/home/stero/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/responseToError.js:47:12)
+    at Request._callback (/home/stero/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/api.js:41:35)
+    at Request.self.callback (/home/stero/.cache/firebase/tools/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:482:12)
+    at Request.<anonymous> (/home/stero/.cache/firebase/tools/lib/node_modules/firebase-tools/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:482:12)
+    at IncomingMessage.<anonymous> (/home/stero/.cache/firebase/tools/lib/node_modules/firebase-tools/node_modules/request/request.js:1076:12)
+    at Object.onceWrapper (events.js:421:28)
+    at IncomingMessage.emit (events.js:327:22)
+    at IncomingMessage.EventEmitter.emit (domain.js:482:12)
+    at endReadableNT (_stream_readable.js:1221:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to create Android app for project stero-uber-clone. See firebase-debug.log for more info.
