@@ -1,19 +1,67 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:uber_clone/mainScreens/main_screen.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:uber_clone/global/global.dart';
+import 'package:uber_clone/screens/splashScreen/splash_screen.dart';
 import 'package:uber_clone/widget/constant.dart';
+import 'package:uber_clone/widget/progress_dialog.dart';
 
-class carInfoScreen extends StatefulWidget {
+class CarInfoScreen extends StatefulWidget {
   @override
-  State<carInfoScreen> createState() => _carInfoScreenState();
+  State<CarInfoScreen> createState() => _CarInfoScreenState();
 }
 
-class _carInfoScreenState extends State<carInfoScreen> {
+class _CarInfoScreenState extends State<CarInfoScreen> {
   TextEditingController carModelTextEditingController = TextEditingController();
   TextEditingController carNumberTextEditingController =
       TextEditingController();
   TextEditingController carColorTextEditingController = TextEditingController();
   List<String> carTypeList = ["Uber-X", "Uber-go", "bike"];
   String? selectedCarType;
+
+  validateCarInfo() {
+    if (carColorTextEditingController.text.isEmpty &&
+        carModelTextEditingController.text.isEmpty &&
+        carNumberTextEditingController.text.isEmpty &&
+        selectedCarType == null) {
+      Fluttertoast.showToast(msg: "All fields are required");
+    } else {
+      saveCarInfoNow();
+    }
+  }
+
+  saveCarInfoNow() {
+    showDialog(
+      context: context,
+      builder: (BuildContext c) => ProgressDialog(
+        message: "Processing please wait",
+      ),
+      barrierDismissible: false,
+    );
+    Map driverCarInfo = {
+      "car_color": carColorTextEditingController.text.toLowerCase().trim(),
+      "car_number": carNumberTextEditingController.text.trim(),
+      "car_model": carModelTextEditingController.text.trim(),
+      "type": selectedCarType,
+    };
+
+    DatabaseReference driversRef =
+        FirebaseDatabase.instance.ref().child("driver");
+
+    driversRef
+        .child(currentFirebaseUser!.uid)
+        .child("car_details")
+        .set(driverCarInfo);
+    Fluttertoast.showToast(
+        msg: "Car Details have being saved, Congratulations");
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MySplashScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,12 +181,7 @@ class _carInfoScreenState extends State<carInfoScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     //Saved info to firebase
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MainScreen(),
-                      ),
-                    );
+                    validateCarInfo();
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.lightGreenAccent,

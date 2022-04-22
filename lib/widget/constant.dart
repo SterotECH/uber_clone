@@ -14,10 +14,10 @@ InputDecoration textFieldInputDecoration(String hint, String label, Icon icon) {
     ),
     focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: Colors.blue),
-      borderRadius: BorderRadius.all(Radius.circular(10)),
+      borderRadius: BorderRadius.all(Radius.circular(5)),
     ),
     enabledBorder: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
+      borderRadius: BorderRadius.all(Radius.circular(5)),
       borderSide: BorderSide(color: Colors.transparent),
     ),
     labelStyle: const TextStyle(

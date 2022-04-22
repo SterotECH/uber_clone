@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:uber_clone/auth/reset_password_screen.dart';
-import 'package:uber_clone/auth/signup_screen.dart';
-import 'package:uber_clone/mainScreens/main_screen.dart';
+import 'package:uber_clone/screens/mainScreens/main_screen.dart';
 import 'package:uber_clone/widget/constant.dart';
 
-class LoginScreen extends StatefulWidget {
+class VerifyPassword extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<VerifyPassword> createState() => _VerifyPasswordState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController emailTextEditingController = TextEditingController();
+class _VerifyPasswordState extends State<VerifyPassword> {
   TextEditingController passwordTextEditingController = TextEditingController();
+  TextEditingController confirmPasswordTextEditingController =
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,27 +31,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 10,
               ),
               const Text(
-                "Login as Driver",
+                "Reset Password",
                 style: TextStyle(
                   fontSize: 26,
                   color: Colors.white,
                   fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                controller: emailTextEditingController,
-                style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 16,
-                ),
-                decoration: textFieldInputDecoration(
-                  'E mail',
-                  'E mail',
-                  const Icon(Icons.email),
                 ),
               ),
               const SizedBox(
@@ -70,7 +53,25 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: textFieldInputDecoration(
                   'Password',
                   'Password',
-                  const Icon(Icons.password),
+                  const Icon(Icons.lock),
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              TextField(
+                obscureText: true,
+                obscuringCharacter: "*",
+                keyboardType: TextInputType.text,
+                controller: confirmPasswordTextEditingController,
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16,
+                ),
+                decoration: textFieldInputDecoration(
+                  'Confirm Password',
+                  'Confirm Password',
+                  const Icon(Icons.lock),
                 ),
               ),
               const SizedBox(height: 16),
@@ -92,44 +93,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     elevation: 0,
                     padding: const EdgeInsets.all(22),
                   ),
-                  child: const Text("Login"),
+                  child: const Text("Reset Password"),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResetPasswordScreen(),
-                        ),
-                      );
-                    },
-                    child: const Text("Forgotten Password"),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
-                        "Don't have Account?",
-                        style: TextStyle(fontSize: 12, color: Colors.grey),
-                      ),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SignUpScreen(),
-                              ),
-                            );
-                          },
-                          child: const Text("Sign up now")),
-                    ],
-                  ),
-                ],
-              )
             ],
           ),
         ),

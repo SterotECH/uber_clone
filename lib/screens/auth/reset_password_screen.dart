@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:uber_clone/auth/login_screen.dart';
-import 'package:uber_clone/auth/verify_password.dart';
+import 'package:uber_clone/screens/auth/login_screen.dart';
+import 'package:uber_clone/screens/auth/otp_screen.dart';
 import 'package:uber_clone/widget/constant.dart';
 
-class OTPScreen extends StatefulWidget {
+class ResetPasswordScreen extends StatefulWidget {
+  ResetPasswordScreen({Key? key}) : super(key: key);
+
   @override
-  State<OTPScreen> createState() => _OTPScreenState();
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _OTPScreenState extends State<OTPScreen> {
-  TextEditingController otpTextEditingController = TextEditingController();
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+  TextEditingController emailTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 height: 10,
               ),
               const Text(
-                "Verify Password",
+                "Reset Password",
                 style: TextStyle(
                   fontSize: 26,
                   color: Colors.white,
@@ -39,30 +41,19 @@ class _OTPScreenState extends State<OTPScreen> {
                 ),
               ),
               const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                "Check your inbox we have sent you a code enter it to reset your Password. If you cant find it check your spam folder",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.green,
-                    fontStyle: FontStyle.italic),
-              ),
-              const SizedBox(
                 height: 16,
               ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
-                controller: otpTextEditingController,
+                controller: emailTextEditingController,
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 16,
                 ),
                 decoration: textFieldInputDecoration(
-                  'Reset Code',
-                  'Reset Code',
-                  const Icon(Icons.verified),
+                  'E mail',
+                  'E mail',
+                  const Icon(Icons.email),
                 ),
               ),
               const SizedBox(height: 16),
@@ -74,17 +65,17 @@ class _OTPScreenState extends State<OTPScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => VerifyPassword(),
+                        builder: (context) => OTPScreen(),
                       ),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.amber,
-                    onPrimary: Colors.black,
+                    primary: Colors.lightGreenAccent,
+                    onPrimary: Colors.blueGrey[900],
                     elevation: 0,
                     padding: const EdgeInsets.all(22),
                   ),
-                  child: const Text("Verify"),
+                  child: const Text("Reset Password"),
                 ),
               ),
               Row(
@@ -99,7 +90,15 @@ class _OTPScreenState extends State<OTPScreen> {
                         ),
                       );
                     },
-                    child: const Text("Return to Login Page"),
+                    child: Text(
+                      "Return to Login Page",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.blueGrey[800],
+                        decorationStyle: TextDecorationStyle.solid,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
                   ),
                 ],
               )

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:uber_clone/auth/login_screen.dart';
-import 'package:uber_clone/auth/otp_screen.dart';
+import 'package:uber_clone/screens/auth/login_screen.dart';
+import 'package:uber_clone/screens/auth/verify_password.dart';
 import 'package:uber_clone/widget/constant.dart';
 
-class ResetPasswordScreen extends StatefulWidget {
-  ResetPasswordScreen({Key? key}) : super(key: key);
-
+class OTPScreen extends StatefulWidget {
   @override
-  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
+  State<OTPScreen> createState() => _OTPScreenState();
 }
 
-class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  TextEditingController emailTextEditingController = TextEditingController();
+class _OTPScreenState extends State<OTPScreen> {
+  TextEditingController otpTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 height: 10,
               ),
               const Text(
-                "Reset Password",
+                "Verify Password",
                 style: TextStyle(
                   fontSize: 26,
                   color: Colors.white,
@@ -41,22 +39,45 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
               ),
               const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                "Check your inbox we have sent you a code enter it to reset your Password. If you cant find it check your spam folder",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.green,
+                    fontStyle: FontStyle.italic),
+              ),
+              const SizedBox(
                 height: 16,
               ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
-                controller: emailTextEditingController,
+                controller: otpTextEditingController,
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 16,
                 ),
                 decoration: textFieldInputDecoration(
-                  'E mail',
-                  'E mail',
-                  const Icon(Icons.email),
+                  'Reset Code',
+                  'Reset Code',
+                  const Icon(Icons.verified),
                 ),
               ),
               const SizedBox(height: 16),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "Return to Login Page",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.blueGrey[800],
+                    decorationStyle: TextDecorationStyle.solid,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
@@ -65,17 +86,17 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => OTPScreen(),
+                        builder: (context) => VerifyPassword(),
                       ),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.lightGreenAccent,
-                    onPrimary: Colors.blueGrey[900],
+                    primary: Colors.amber,
+                    onPrimary: Colors.black,
                     elevation: 0,
                     padding: const EdgeInsets.all(22),
                   ),
-                  child: const Text("Reset Password"),
+                  child: const Text("Verify"),
                 ),
               ),
               Row(
@@ -90,7 +111,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         ),
                       );
                     },
-                    child: const Text("Return to Login Page"),
+                    child: Text(
+                      "Return to Login Page",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.blueGrey[800],
+                        decorationStyle: TextDecorationStyle.solid,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
                   ),
                 ],
               )

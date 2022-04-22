@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:uber_clone/auth/login_screen.dart';
-import 'package:uber_clone/auth/signup_screen.dart';
+import 'package:uber_clone/global/global.dart';
+import 'package:uber_clone/screens/auth/login_screen.dart';
+import 'package:uber_clone/screens/mainScreens/main_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({Key? key}) : super(key: key);
@@ -12,17 +13,22 @@ class MySplashScreen extends StatefulWidget {
 }
 
 class _MySplashScreenState extends State<MySplashScreen> {
-  startTimer() async {
+  startTimer() {
     Timer(
       const Duration(seconds: 4),
-      () {
+      () async {
         //Send user to the main Screen or otherwise send teh user to the login screen
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginScreen(),
-          ),
-        );
+        if (firebaseAuth.currentUser != null) {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const MainScreen()));
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginScreen(),
+            ),
+          );
+        }
       },
     );
   }
